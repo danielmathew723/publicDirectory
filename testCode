@@ -1,0 +1,64 @@
+from random import randint
+
+play = ["Rock", "Paper", "Scissors"]
+
+computer = play[randint(0, 2)]
+
+win = "You have achieved peak mega brain cells."
+lose = "Imagine losing to the computer."
+tie = "You have neither gained nor lost brain cells."
+choose = "Computer chose " + computer
+
+counter = 0
+
+game = True
+
+def outcome(out):
+    if out == 'tie':
+        print(choose)
+        print(tie)
+    elif out == 'win':
+        print(choose)
+        print(win)
+    else:
+        print(choose)
+        print(lose)
+
+
+def rules(play1, play2):
+    if play1 == 'Rock':
+        if play2 == 'Rock':
+            outcome('tie')
+        elif play2 == 'Paper':
+            outcome('win')
+        else:
+            outcome('lose')
+    elif play1 == 'Paper':
+        if play2 == 'Rock':
+            outcome('lose')
+        elif play2 == 'Paper':
+            outcome('tie')
+        else:
+            outcome('win')
+    else:
+        if play2 == 'Rock':
+            outcome('win')
+        elif play2 == 'Paper':
+            outcome('lose')
+        else:
+            outcome('tie')
+
+while game:
+    if counter == 0:
+        player = input("Choose Rock, Paper, or Scissors: ")
+    else:
+        player = input("Choose Rock, Paper, or Scissors. Or type 'break' to end the game: ")
+    while player != "Rock" and player != "Scissors" and player != "Paper" and player != 'break':
+        print("Do you are have stupid?")
+        player = input("Choose Rock, Paper, or Scissors: ")
+    if player != 'break':
+        rules(computer, player)
+    else:
+        break
+    computer = play[randint(0, 2)]
+    counter += 1
